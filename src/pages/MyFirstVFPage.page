@@ -1,0 +1,12 @@
+<apex:page Controller="newpage">
+  <!-- Begin Default Content REMOVE THIS -->
+ <apex:form >
+<apex:pageBlock title="Congratulations {!init}">
+You belong to the Account Name: {!$User.FirstName}.
+<apex:pageblocksection >
+Forcast for the Year is {!forecast}.
+</apex:pageblocksection>
+</apex:pageBlock>
+</apex:form>
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

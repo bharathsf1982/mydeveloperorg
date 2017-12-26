@@ -1,0 +1,37 @@
+<apex:page Controller="fisfcst">
+<apex:sectionHeader title="FIS Mass Update"></apex:sectionHeader>
+<apex:form > 
+<apex:pageBlock id="pageBlock" >
+<apex:pageBlockButtons location="top">
+    <apex:outputLabel style="font-weight:bold;" value="Sales person email" ></apex:outputLabel>&nbsp;:
+        <apex:inputText value="{!slspsnemail}"/> <p />
+    <apex:outputLabel style="font-weight:bold;" value="Fiscal year" ></apex:outputLabel>&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+        <apex:inputText value="{!fisyear}"/>  <p />
+    <apex:commandButton value="Submit" id="btnCopy" action="{!test}" />
+</apex:pageBlockButtons>
+             
+<apex:pageBlockTable value="{!results}" var="l" rendered="{!NOT(ISNULL(results))}">
+        <apex:column headerValue="Period">
+        <apex:inputField value="{!l.Fiscal_period__c}"  />
+        </apex:column>
+        <apex:column headerValue="start date">
+        <apex:outputField value="{!l.Start_date__c}" />
+        </apex:column>
+        <apex:column headerValue="Fis forecast">
+        <apex:inputField value="{!l.Fis_forecast__c}" />
+        </apex:column>
+        <apex:column headerValue="Fis plan">
+        <apex:inputField value="{!l.Fis_plan__c}"  
+        />
+        </apex:column>
+        <apex:column headerValue="Fis sales">
+        <apex:inputField value="{!l.Fis_sales__c}" />
+        </apex:column> 
+    </apex:pageBlockTable>
+   <apex:commandButton value="Save" id="btnSave" action="{!save}" />
+   <apex:commandButton value="New" id="btnNew" action="{!newfis}" />   
+</apex:pageBlock>
+</apex:form>
+<apex:actionStatus id="status" startText="Requesting..."/>
+</apex:page>

@@ -1,0 +1,27 @@
+<apex:page controller="Autopopulate" id="mypage" sidebar="false" >
+
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+            id="sb" width="100%" height="990"
+codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+            <param name="movie" value="{!$Resource.Storyboard}" />
+            <param name="quality" value="high" />
+            <param name="wmode" value="transparent" />
+            <param name="bgcolor" value="#869ca7" />
+            <param name="allowScriptAccess" value="sameDomain" />
+            <param name="FlashVars" 
+value="sid={!MySessionId}&scoppid={!oppId}&surl={!$Api.Partner_Server_URL_90}" />
+            <embed src="{!$Resource.Storyboard}" 
+        quality="high" bgcolor="#869ca7"
+                width="100%" height="990" name="sb" 
+FlashVars="sid={!MySessionId}&scoppid={!oppId}&surl={!$Api.Partner_Server_URL_90}"
+                play="true"
+                loop="false"
+                wmode="transparent"
+                quality="high"
+                allowScriptAccess="sameDomain"
+                type="application/x-shockwave-flash"
+                pluginspage="http://www.adobe.com/go/getflashplayer">
+            </embed>
+    </object>
+
+</apex:page>
