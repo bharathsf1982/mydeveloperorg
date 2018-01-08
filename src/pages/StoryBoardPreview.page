@@ -1,0 +1,531 @@
+<apex:page controller="storyBoard" renderAs="pdf" standardStylesheets="false" showHeader="false" sidebar="false">
+ <html>
+    <head>
+    <style type="text/css">
+     @page {
+    /* Landscape orientation */
+    size:landscape;
+     }     
+    table#bordercolor{
+    border-style: solid;
+    border-color: #000000;
+     }
+     
+     td#Wrap{
+     white-space: pre-wrap; /* css-3 */
+     white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+     white-space: -pre-wrap; /* Opera 4-6 */
+     white-space: -o-pre-wrap; /* Opera 7 */
+     word-wrap: break-word; /* Internet Explorer 5.5+ */
+        } 
+     #header {      
+      position: absolute;
+      padding-top: 5px;
+      top: 0px;
+      left: 0px;
+      width: 950px;
+      height: 30px;
+    }
+    #veryfirstRowLeft {
+      background: #fff;
+      position: absolute;
+      top: 30px;
+      left: 0px;
+      width: 550px;
+      height: 120px;
+
+    }
+    #veryfirstRowRight {
+      background: #fff;
+      position: absolute;
+      top: 30px;
+      left: 550px;
+      width: 450px;
+      height: 120px;
+
+    }
+    #firstRowLeft {
+      background: #fff;
+      position: absolute;
+      top: 150px;
+      left: 0px;
+      width: 550px;
+      height: 150px;
+    }
+    #firstRowRight {
+      background: #fff;
+      position: absolute;
+      top: 150px;
+      left: 550px;
+      width: 450px;
+      height: 150px;
+    }
+#secondRowLeft {
+      background: #fff;
+      position: absolute;
+      top: 300px;
+      left: 0px;
+      width:  550px;
+      height: 200px;
+    }
+    #secondRowRight {
+      background: #fff;
+      position: absolute;
+      top: 300px;
+      left: 550px;
+      width: 450px;
+      height: 100px;
+    }
+#thirdRowLeft {
+      background: #fff;
+      position: absolute;
+      top: 450px;
+      left: 0px;
+      width:  550px;
+      height: 100px;
+    }
+    #thirdRowRight {
+      background: #fff;
+      position: absolute;
+      top: 450px;
+      left: 550px;
+      width: 450px;
+      height: 100px;
+    }     
+  .pdfextract{
+    FONT-WEIGHT: lighter;
+    FONT-SIZE: 8px;
+    FONT-STYLE: normal;
+    }
+    table th{
+    border-width: 1px 1px 1px 1px;
+    padding: 1px 1px 1px 1px;
+    border-style: inset inset inset inset;
+    border-color: grey grey grey grey;
+    -moz-border-radius: 0px 0px 0px 0px;
+}
+.centerHeader2 {
+background-color:#D9D9D9;
+}
+    </style>
+    </head>
+    <body>
+    
+    
+    
+    <div id="header" class="pdfextract">
+    <table class="bordercolor" border="1" width="100%">
+    <tr>
+    <td class = "Wrap" width="25%">
+    <b>Tyco Electronics Opportunity Storyboard </b> 
+    </td>
+    <td class = "Wrap" width="25%">
+    Customer: <apex:outputField value="{!sbdt.sb_customer_name__c} " />
+    </td>
+    <td class = "Wrap" width="25%">
+    Opportunity: <apex:outputField value="{!sbdt.sb_opportunity_name__c}" />
+    </td>
+    <td class = "Wrap" width="10%">
+    Date: <apex:outputField value="{!sbdt.Date__c}" />
+    </td>
+    <td class = "Wrap" width="15%">
+    Revenue/Margins:$ <apex:outputField value="{!sbdt.Revenue_Margins__c}" />
+    </td>  
+    </tr>
+    </table>
+    </div>
+
+
+
+
+   
+    <div id="veryfirstRowLeft"  class="pdfextract">
+    <table  border="1" width="100%">
+    <thead style="background-color:#B8CCE4;">
+    <th align="center">
+    <apex:outputText Value="Customer insight - Third Box Thinking " /> 
+    </th>
+    </thead>
+    </table>
+    
+    
+    
+    <table  border="1" width="100%" height="80%">
+    <tr width="100%" height="20%">
+    <td class = "Wrap" width="25%">
+    <b><apex:outputField value="{!tbtdet.CustInsight_TBT1__c}" />    </b>
+    </td>
+
+    <td class = "Wrap" width="25%">
+    <b><apex:outputField value="{!tbtdet.CustInsight_TBT2__c}" />    </b>
+    </td>
+
+    <td class = "Wrap"  width="25%">
+    <b><apex:outputField value="{!tbtdet.CustInsight_TBT3__c}" />    </b>
+    </td>
+    
+    <td class = "Wrap" width="25%">
+    <b><apex:outputField value="{!tbtdet.CustInsight_TBT4__c}" />    </b>
+    </td>
+    </tr>
+    <tr width="100%" height="80%" style="background-color:#D9D9D9;">
+    
+    <td class = "Wrap" width="25%" VALIGN="TOP">
+    <apex:repeat value="{!tbd1}" var="Taw">
+    <li> <apex:outputText value="{!Taw}" /></li>
+    </apex:repeat>
+     </td>
+
+     <td width="25%"  class = "Wrap"  VALIGN="TOP">
+     <apex:repeat value="{!tbd2}" var="Taw">
+     <li> <apex:outputText value="{!Taw}" /></li>
+     </apex:repeat>
+     </td>
+  
+      <td width="25%"  class = "Wrap"  VALIGN="TOP">
+      <apex:repeat value="{!tbd3}" var="Taw">
+      <li> <apex:outputText value="{!Taw}" /></li>
+      </apex:repeat>
+      </td>
+  
+      <td class = "Wrap" width="25%"  VALIGN="TOP">
+      <apex:repeat value="{!tbd4}" var="Taw">
+      <li> <apex:outputText value="{!Taw}" /></li>
+      </apex:repeat>
+      </td>
+      </tr>
+      </table>
+      </div>
+      
+      <div id="veryfirstRowRight"  class="pdfextract">
+      <table  border="1" width="90%">
+      <thead style="background-color:#E5B8B7;">
+      <th align="center">
+      <apex:outputText Value="Financial Criteria and Information" /> 
+      </th>
+      </thead>
+      </table>
+      <table border="1" width="90%">
+      <thead class="centerHeader2">
+      <th>
+      Information Type
+      </th>
+      <th>      
+      Information
+      </th>
+      <th>
+      How do you know?
+      </th>
+      </thead>
+      <tbody>
+      <tr>
+      <td class="centerHeader2">
+      Budget Set?
+      </td>
+      <td class = "Wrap" >
+      <apex:outputField value="{!fcidt.FCI_IT_Budget_Set_Infortion__c}" />   
+      </td>
+      <td class = "Wrap" >
+      <apex:outputField value="{!fcidt.FCI_IT_Budget_set_How__c}" />
+      </td>
+      </tr>
+      <tr>
+      <td class="centerHeader2">
+              Budget Amount?
+       </td>
+       <td>
+       <apex:outputField value="{!fcidt.FCI_IT_Budget_amount_Information__c}" />
+       </td>
+       <td class = "Wrap" >
+             <apex:outputField value="{!fcidt.FCI_IT_Budget_amount_How__c}" /> 
+       </td>
+       </tr>
+       <tr>
+       <td class="centerHeader2">
+              Budget Process?
+       </td>
+       <td class = "Wrap" >
+            <apex:outputField value="{!fcidt.FCI_IT_Budget_process_Information__c}" />
+       </td>
+       <td class = "Wrap" >
+       <apex:outputField value="{!fcidt.FCI_IT_Budget_process_How__c}" />
+       </td>
+       </tr>
+       <tr>
+       <td class="centerHeader2">
+              Budget Criteria
+       </td>
+       <td class = "Wrap" >
+              <apex:outputField value="{!fcidt.FCI_IT_Budget_criteria_Information__c}" />
+       </td>
+       <td class = "Wrap" >
+              <apex:outputField value="{!fcidt.FCI_IT_Budget_criteria_How__c}" />
+       </td>
+       </tr>
+       <tr>
+       <td class="centerHeader2">
+              Other Financial Issues
+       </td>
+       <td class = "Wrap" >
+       <apex:outputField value="{!fcidt.FCI_IT_Budget_OFI_Information__c}" />
+       </td>
+       <td class = "Wrap" >
+       <apex:outputField value="{!fcidt.FCI_IT_Budget_OFI_How__c}" />
+       </td>
+       </tr>
+       </tbody>
+       </table>
+    </div>
+
+    <div id="firstRowLeft" class="pdfextract">
+    <table  border="1" width="100%">
+    <thead style="background-color:#FBD4B4;">
+    <th align="center">
+    <apex:outputText Value="Customer insight - Business Issues and Initiatives " /> 
+    </th>
+    </thead>
+    </table>
+   
+        <apex:pageBlock >
+        <apex:pageBlockTable border="1"  value="{!csBii}" var="l" headerClass="centerHeader2" rendered="{!NOT(ISNULL(csBii))}" >
+        <apex:column headerValue="Business Issues and Initiatives:WHAT">
+        <apex:outputField value="{!l.CustInsight_BII_What__c}"  />
+        </apex:column> 
+        <apex:column headerValue="Why is This a problem?"  >
+        <apex:OutputField value="{!l.CustInsight_BII_Why__c}"   />
+        </apex:column>
+        <apex:column headerValue="What Are They Doing ABout This Issue or Intiative?" >
+        <apex:OutputField value="{!l.CustInsight_BII_Doing__c}" />
+        </apex:column> 
+        <apex:column headerValue="WHO Cares or Leads This Initiative?" >
+        <apex:OutputField value="{!l.CustInsight_BII_Who__c}" />
+        </apex:column>            
+        <apex:column headerValue="Can We IMPACT Our Products & Services?">
+        <apex:OutputField value="{!l.CustInsight_BII_Impact__c}" />
+        </apex:column>
+        </apex:pageBlockTable>
+        </apex:pageBlock>
+
+    </div>
+    <div id="firstRowRight"  class="pdfextract">
+    
+  <apex:pageBlock >
+  <table  border="1" width="90%">
+  <thead>
+  <tr style="background-color:#D6E3BC;">
+  <th align="center">
+  <apex:outputText Value="Competative Scan" /> 
+  </th>
+</tr>
+    <tr style="background-color:#D9D9D9;">
+    <th color="white">
+    <apex:outputText Value="Competitor's Involved : " />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <apex:outputField value="{!sbdt.Competitor_s_Involved__c}" />
+    </th>
+</tr>
+      </thead>
+      </table>
+   
+     <apex:pageBlockTable border="1" width="90%" value="{!CS}"  var="s" rendered="{!NOT(ISNULL(CS))}" headerClass="centerHeader2">
+        <apex:column headerValue="Competitors Strengths">
+        <apex:outputField value="{!s.Competitor_Strength__c}" style="width: 80px; height: 12px" />
+        </apex:column> 
+        <apex:column headerValue="Competitor Weaknesses" width="30%">
+        <apex:OutputField value="{!s.Competitor_Weaknesses__c}"  style="width: 80px; height: 12px" />
+        </apex:column>
+        <apex:column headerValue="Your Stenghts" width="20%">
+        <apex:OutputField value="{!s.Your_Strengths__c}" style="width: 80px; height: 12px" />
+        </apex:column> 
+        <apex:column headerValue="Your Weaknesses" width="20%">
+        <apex:OutputField value="{!s.Your_Weaknesses__c}"   style="width: 80px; height: 12px" />
+        </apex:column>  
+        </apex:pageBlockTable>  
+        
+<table  width="90%" border="1">
+<tr>
+<td class = "Wrap" >
+Your Opportunities  :  <apex:outputField value="{!sbdt.Your_Opportunities__c}" />
+</td>
+<td class = "Wrap" >
+Your Threats  : <apex:outputField value="{!sbdt.Your_Threats__c}" />
+</td>
+</tr>
+<tr>
+<td class = "Wrap" >
+Competitor's Anticipated Stratergy  :  <apex:outputField value="{!sbdt.Competitor_s_Anticipated_Strategy__c}" />
+</td>
+<td >
+Your Competitive Statergy : <apex:outputField value="{!sbdt.Your_Competitive_Startegy__c}" />
+</td>
+</tr>
+</table>
+</apex:pageBlock>
+    </div>
+    <div id="secondRowLeft"  class="pdfextract">
+ 
+      <apex:pageBlock >
+      <table border="1"  width="100%">
+    <thead style="background-color:#CCC0D9;">
+    <th align="center">
+      <apex:outputText Value="Solution Development " /> 
+      </th>
+      </thead>
+      </table> 
+      <apex:pageBlockTable border="1" width="100%"  value="{!sd}" var="B" rendered="{!NOT(ISNULL(sd))}">
+        <apex:column headerValue="Product & Service" >
+        <apex:outputField value="{!B.SD_Product_and_Service__c}"  />
+        </apex:column> 
+        <apex:column headerValue="Offer Enablers">
+        <apex:OutputField value="{!B.SD_Offer_Enablers__c}"  />
+        </apex:column> 
+     </apex:pageBlockTable>
+   
+     <br />
+     <br />
+    <table border="1" width="100%" >
+    <thead style="background-color:#E5B8B7;">
+    <th align="center">
+    <apex:outputText Value="Decision Influencer(s)"  />   <br/>  
+    <apex:outputText style="font-size:6px;" Value="*FA-Final Approver, EV-Evaluator, IM-Implementer, MI-Motivated 
+
+Influencer, AD-Advocate" /> 
+    </th>
+    <th align="center">
+      <apex:outputText Value="Relationship Scan"/> <br />
+    <apex:outputText style="font-size:6px;" Value="* -3 Adversarial, -2 Troubled, -1 None/Unknown, +1 Basic, +2 Standard, 
+
++3 Advanced" /> 
+    </th>
+    </thead>
+    
+  </table>
+    <apex:pageBlockTable border="1"  value="{!dirs}" headerClass="centerHeader2" var="D" rendered="{!NOT(ISNULL(dirs))}" width="100%">
+        <apex:column headerValue="Name"  width="60px">
+        <apex:outputField value="{!D.DI_Name__c}" />
+        </apex:column> 
+        <apex:column headerValue="Title"  width="60px" >
+        <apex:OutputField value="{!D.DI_Title__c}" />
+        </apex:column>
+        <apex:column headerValue="Type"  width="30px">
+        <apex:OutputField value="{!D.DI_Type__c}" />
+        </apex:column>
+        <apex:column headerValue="Compelling Interest in the deal" width="136px" >
+        <apex:OutputField value="{!D.DI_Compelling_Interest_in_the_deal__c}" />
+        </apex:column>      
+        <apex:column headerValue="Rating"  width="39px" >
+        <apex:OutputField value="{!D.RS_Rating__c}"  />
+        </apex:column>
+        <apex:column headerValue="Explain Rating"  width="95px">
+        <apex:OutputField value="{!D.RS_Explain_Rating__c}" />
+        </apex:column>
+        <apex:column headerValue="Relationship Owner"  width="130px">
+        <apex:OutputField value="{!D.RS_Relationship_Owner__c}" />
+        </apex:column>
+        </apex:pageBlockTable>    
+        </apex:pageBlock>
+    </div>
+    <div id="secondRowRight"  class="pdfextract">
+
+    <apex:pageBlock >
+      <table  border="1" width="90%">
+    <thead style="background-color:#B8CCE4;">
+    <th align="center">
+      <apex:outputText Value="Value Proposition"/> 
+      </th>
+      </thead>
+      </table> 
+        
+   <apex:pageBlockTable border="1" width="90%" value="{!vp}" headerClass="centerHeader2"  var="Val" rendered="{!NOT(ISNULL(vp))}" >
+       <apex:column headerValue="What do they care about" >
+        <apex:outputField value="{!Val.VP_What_do_they_care_about__c}" style="width: 110px; height: 12px" />
+        </apex:column> 
+        <apex:column headerValue="What do you have?" >
+        <apex:outputField value="{!Val.VP_What_do_you_have__c}" style="width: 110px; height: 12px" />
+        </apex:column> 
+        <apex:column headerValue="Impact(1-3 Words)">
+        <apex:OutputField value="{!Val.VP_Impact__c}" style="width: 110px; height: 12px" />
+        </apex:column>
+       
+   </apex:pageBlockTable>
+   <table  width="90%" border="1">
+<tr>
+<td class = "Wrap" >
+Value Proposition :  <apex:outputField value="{!sbdt.Value_Proposition__c}" />
+</td>
+<td class = "Wrap" >
+Proof Points :    <apex:outputField value="{!sbdt.Proof_Points__c}" />
+
+</td>
+</tr>
+</table>
+
+        </apex:pageBlock>
+
+    </div>
+    <div id="thirdRowLeft"  class="pdfextract">
+      
+    <apex:pageBlock >
+    <table  border="1" width="100%">
+    <thead style="background-color:#D6E3BC;">
+    <th align="center">
+      <apex:outputText Value="Internal Resource Alignment " /> 
+      </th>
+      </thead>
+      </table>
+
+   <apex:pageBlockTable border="1" headerClass="centerHeader2" value="{!ira}" var="R" 
+   rendered="{!NOT(ISNULL(ira))}" width="100%">
+        <apex:column headerValue="Type">
+        <apex:outputField value="{!R.IRA_Type__c}"  />
+        </apex:column> 
+        <apex:column headerValue="Solution Element">
+        <apex:outputField value="{!R.IRA_Solution_Element__c}" />
+        </apex:column> 
+        <apex:column headerValue="Owner">
+        <apex:OutputField value="{!R.IRA_Owner__c}"  />
+        </apex:column>
+        <apex:column headerValue="Interest in Oppty">
+        <apex:OutputField value="{!R.IRA_Interest_in_Opportunity__c}" />
+        </apex:column> 
+        <apex:column headerValue="Customer Contact">
+        <apex:OutputField value="{!R.IRA_Customer_contact__c}"  />
+        </apex:column>
+        <apex:column headerValue="Action to engage">
+        <apex:OutputField value="{!R.IRA_Action_to_engage__c}"  />
+        </apex:column>            
+   </apex:pageBlockTable>
+  
+  
+        </apex:pageBlock>
+    </div>
+
+    <div id="thirdRowRight"  class="pdfextract"> 
+
+    <apex:pageBlock >
+      <table  border="1" width="90%">
+    <thead style="background-color:#FBD4B4;">
+    <th align="center">
+    <apex:outputText Value="Team Action Plan " /> 
+    </th>
+    </thead>
+ 
+  </table>
+       
+        <apex:pageBlockTable border="1" headerClass="centerHeader2" value="{!tap}" var="t"  width="90%" rendered="{!NOT(ISNULL(tap))}">
+        <apex:column headerValue="Priority">
+        <apex:outputField value="{!t.TAP_Priority__c}" />
+        </apex:column> 
+        <apex:column headerValue="Action Item" >
+        <apex:outputField value="{!t.TAP_Action_Item__c}" />
+        </apex:column> 
+        <apex:column headerValue="Who">
+        <apex:OutputField value="{!t.TAP_Who__c}" />
+        </apex:column>
+        <apex:column headerValue="When" >
+        <apex:OutputField value="{!t.TAP_When__c}" />
+        </apex:column>
+       </apex:pageBlockTable>
+       </apex:pageBlock>
+       </div>   
+    </body>
+    </html>
+</apex:page>

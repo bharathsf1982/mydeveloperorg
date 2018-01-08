@@ -1,0 +1,7 @@
+<apex:page standardController="Account">
+      <apex:pageBlock title="My Contact Details">
+        <p>Hello {!Account.Name}</p>
+      </apex:pageBlock>                  
+      <apex:detail relatedList="false" />
+     
+    </apex:page>
