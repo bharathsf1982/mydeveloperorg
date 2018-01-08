@@ -1,0 +1,17 @@
+{
+    "projectName": "MyDeverloperOrg",
+    "username": "bharathkumarkr@gmail.com",
+    "id": "0f50a880-ea35-11e7-be66-cf39f8a6623d",
+    "namespace": "",
+    "orgType": "developer",
+    "loginUrl": "https://login.salesforce.com/",
+    "instanceUrl": "https://ap1.salesforce.com",
+    "workspace": "C:\\Users\\bharath\\Documents",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "StaticResource"
+    ]
+}
